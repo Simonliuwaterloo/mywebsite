@@ -5,7 +5,57 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<meta charset="utf-8">
 	<title>Jianyan's personal site</title>
+	<script>
+	    window.onload = function () {
+	        var way_res = [];
+	        var btn_txt = document.getElementsByClassName("but");
+	        var txt = document.getElementsByClassName("scr")[0];
+	        var btn_way = document.getElementsByClassName("but_click");
+	        for (var i = 0; i < btn_way.length; i++) {
+	            btn_way[i].onclick = function () {
+	                if (this.value == "AC") {
+	                    way_res = [];
+	                    txt.value = "";
+	                }
+	                else {
+	                    txt.value = txt.value.substr(0, txt.value.length - 1);
+	                }
+	            }
+	        }
+	        for (var i = 0; i < btn_txt.length; i++) {
+	            btn_txt[i].onclick = function () {
+	                if (txt.value == "" && this.value == ".") {
+	                    txt.value = "0.";
+	                }
+	                else {
+	                    if (!isNaN(this.value) || this.value == ".") {
+	                        if (txt.value.indexOf(".") != -1) {
+	                            if (this.value != ".") {
+	                                txt.value += this.value;
+	                            }
+	                        }
+	                        else {
+	                            txt.value += this.value;
+	                        }
+	                    }
+	                    else {
+	                        if (this.value != "=") {
+	                            way_res[way_res.length] = txt.value;
+	                            way_res[way_res.length] = this.value;
+	                            txt.value = "";
+	                        }
+	                        else {
+	                            way_res[way_res.length] = txt.value;
+	                            txt.value = eval(way_res.join(""));
+	                            way_res = [];
+	                        }
+	                    }
+	                }
+	            }
+	        }
+	    }
 
+	</script>
 </head>
 ​
 
@@ -29,31 +79,44 @@
 <div style="margin-left:15%;padding:1px 16px;height:50px;margin-right:40%;">
 	​<section id="home">
 	<h1>Hello, I am <strong>Jianyan Li</strong>.</h1>
-	<p1><center>1A Computer Engineering | University of Waterloo</center></p1>
+	<div class="d">
+		<p1><center>1A Computer Engineering | <img width="100px" style="float: right;" alt="waterloo" src="img/waterloo.jpg"/></center></p1>
+	</div>
 	​</section>
 
-	<section style="text-align: center;">
-	<img class="center" alt="waterloo" src="waterloo.jpg"/>
-	</section>
+	
 
 	<section id="projects">
 		<h2>Projects</h2>
-		<h4>High School Project— Rube Goldberg Machine</h4>
-		<p>Learned how to cooperate with group members.
-		Produced a robot car that could transfer a marble using Arduino Uno platform.
-		Our objective was to program the car so that it would wait for ten seconds for the ball to fall into a cup on it, after that, it then move along a predesigned route to the destination.
-		To let the car move along a certain track, we installed a infrared radiation sensor on our Arduino motherboard. This sensor can constantly send IR to the floor and detect reflection.
-		We tape the track using electrical tape, which can hardly reflect IR. Therefore, our can detect whether the car is on truck by monitoring the output of IR sensor.
-		Ue to a lack of  servo motor, so we sent PWM signal to the motor of our car to control its direction.
+
+		<h4>High School Project — Rube Goldberg Machine</h4>
+		<p>Learned how to cooperate with group members.<br>
+		Produced a robot car that could transfer a marble using Arduino Uno platform.<br>
+		Our objective was to program the car so that it would wait for ten seconds for the ball to fall into a cup on it, after that, it then move along a predesigned route to the destination.<br>
+		To let the car move along a certain track, we installed a infrared radiation sensor on our Arduino motherboard. This sensor can constantly send IR to the floor and detect reflection.<br>
+		We tape the track using electrical tape, which can hardly reflect IR. Therefore, our can detect whether the car is on truck by monitoring the output of IR sensor.<br>
+		Due to a lack of  servo motor, we chose to send PWM signal to the motor of our car to control its direction. 
 		</p>
-		<h4>Personal Website— www.jianyanli.com</h4>
-		<p>In order to better showcase me skills, I built a personal website.
-		The first thing I did was to buy a domain name and rent a server.
+	
+		<h4>Python Project — k-NN Algorithm</h4>
+		<p>k-NN algorithm classifies a set of objects according to their distance from objects which are already classified. <br>
+		These objects are described by matrices, therefore, I used Array from NumPy to represent them and matplotlib to plot them. </p>
+
+		<h4>Personal Website — www.jianyanli.com</h4>
+		<p>In order to better showcase me skills, I built a personal website.<br>
+		The first thing I did was to buy a domain name and rent a server. <br>
 		After mapping the domain name to my server, I started to  create my home page using HTML, CSS and JavaScript.
 		</p>
-		<h4>Python Project— k-NN Algorithm</h4>
-		<p>k-NN algorithm classifies a set of objects according to their distance from objects which are already classified.
-		These objects are described by matrices, therefore, I used Array from NumPy to represent them and matplotlib to plot them. </p>
+
+		<h4>JavaSrcipt Project — Calculator</h4>
+		<p>I integrated this shaort JavaScript code with my website.
+		The main function of this script is to show a calculator on my website.<br>
+		It takes three steps for this code to do a simple calculation.<br>
+		First, it will get the elements user inputed.<br>
+		Then, it will store the data.<br>
+		At last, it visits the data and perform actions on them.<br>
+		I have never coded using JavaScript before, so the most challenging part for me is to categorize these data. To perform calculation, we must put inputs into differents groups, such as numbers, dots and operators. I had to use a number of if...else statements, and it took me hours to fix the bug generated by them.<br>
+		This experience teaches me that I should design a  solution using tools like flow charts first, then start coding.
 	</section>
 
 	<section id="experiences">
@@ -86,12 +149,12 @@
 		<h4>ECE 150 - Fundamentals of Programming</h4>
 		<h4>ECE 190 - Engineering Profession and Practice</h4>
 		<h4>ECE 105 - Classical Mechanics</h4>
-		<h4>GENE 191 -Engineering Communication</h4>
+		<h4>GENE 191 - Engineering Communication</h4>
 		<h4>MATH 115 - Linear Algebra</h4>
 		<h4>Math 117 - Calculus 1</h4>
 	</section>
-
-
+	
+	
 
 
 </div>
@@ -101,17 +164,27 @@
 <div class="a">
 	<section class="left" id="contacts">
 		<h2>Contacts</h2>
-		<p><i class="fa fa-phone"></i> +1 519-580-1693</p>
+		<p><i class="fa fa-globe"></i> <a class="boxhead"href="https://www.google.com/maps/@43.4704304,-80.5369229,17z">my location</a></p>
+		<p><i class="fa fa-phone"></i> <font color="5c5ead">+1 519-580-1693</font></p>
 	    <p><i class="fa fa-envelope-o"></i> <a class="boxhead" href="mailto:jianyan.li@edu.uwaterloo.ca">jianyan.li@edu.uwaterloo.ca</a></p>
-	    <p><i class="fa fa-globe"></i> <a class="boxhead"href="https://www.google.com/maps/@43.4704304,-80.5369229,17z">my location</a></p>
 	    <p><i class="fa fa-github"></i> <a class="boxhead" href="https://github.com/simonliuwaterloo">https://github.com/simonliuwaterloo</a></p>
-	</section>
 
+	</section>
+	
 </div>
 
 <div class="b">
-	<img class="center" src="arduino.jpg" alt="arduino" width="400px"/>
+	<div id="slideshow">
+	  	<div class="slide-wrapper">
+		    <div class="slide"><h1 class="slide-number"></h1></div>
+		    <div class="slide"><h1 class="slide-number"></h1></div>
+		    <div class="slide"><h1 class="slide-number"></h1></div>
+		    
+  		</div>
+	</div>
+
 </div>
+
 
 <div class="c">
 <table>
@@ -150,6 +223,7 @@
           <td><input class="but" type="button" value="="/></td>
 
       </tr>
+
 
 </table>
 </div>

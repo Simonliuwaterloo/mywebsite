@@ -36,10 +36,14 @@ h2 {
 	color:#633988;
 }
 
+h4 {
+    color:#836878;
+}
 p {
     font-family:"sans-serif";
-    font-size:20px;
+    font-size:16px;
     border-style:none;
+    line-height: 1.5;
 }
 
 img {
@@ -62,31 +66,39 @@ img {
 
 div.a {
     position: absolute;
-    left: 1010px;
+    left: 1000px;
     width: 500px;
     height: auto;
-    
+    margin-top: 100px;
     border-style: none;
 }
 
 div.b {
     position: absolute;
-    left: 950px;
-    width: 500px;
+    left: 1000px;
+    width: 400px;
     height: auto;
     margin-top: 420px;
-    border-style: none;
+    border-style: solid;
 
 }
 
 div.c {
     position: absolute;
-    left: 950px;
-    width: 410px;
+    left: 1000px;
+    width: 420px;
     height: auto;
-    margin-top: 700px;
+    margin-top: 1000px;
     border-style: solid;
-    background-color: lightgrey
+    background-color: lightgrey;
+
+}
+
+div.d {
+    position: absolute;
+    left:400px;
+    width: 320px;
+    height: auto;
 
 }
 
@@ -117,4 +129,50 @@ td {
     width: 400px;
     line-height: 100px;
     font-size: x-large;text-align: right;
+}
+
+
+
+
+#slideshow {
+  overflow: hidden;
+  height: 280px;
+  width: 400px;
+  margin: 0 auto;
+}
+
+.slide-wrapper {
+  width: 2000px;
+  -webkit-animation: slide 18s ease infinite;
+}
+
+.slide {
+  float: left;
+  height: 300px;
+  width: 400px;
+}
+
+.slide:nth-child(1) {
+  background-image:url("img/arduino.jpg");
+  background-size: 400px;
+}
+
+.slide:nth-child(2) {
+  background-image:url("img/me.jpg");
+  background-size: 400px;
+}
+
+.slide:nth-child(3) {
+  background-image:url("img/graduation.jpg");
+  background-size: 400px;
+}
+
+
+
+@-webkit-keyframes slide {
+  20% {margin-left: 0px;}
+  30% {margin-left: -400px;}
+  50% {margin-left: -400px;}
+  60% {margin-left: -800px;}
+  70% {margin-left: -800px;}
 }
